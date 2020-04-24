@@ -1,6 +1,6 @@
-#estring
-<br\>
-##concats
+# estring
+<br>
+## concats
 ```
 goos: linux
 goarch: amd64
