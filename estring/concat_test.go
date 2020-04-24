@@ -2,6 +2,7 @@ package estring
 
 import (
 	"bytes"
+	"fmt"
 	"strconv"
 	"strings"
 	"testing"
@@ -26,7 +27,7 @@ func Benchmark_Native2(b *testing.B) {
 func Benchmark_Native3(b *testing.B) {
 	var a []byte
 	for i := 0; i < b.N; i++ {
-		a = append(a,[]byte(strconv.Itoa(i))...)
+		a = append(a, []byte(strconv.Itoa(i))...)
 	}
 	_ = string(a)
 }
@@ -36,7 +37,7 @@ func Benchmark_Join(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		a = append(a, strconv.Itoa(i))
 	}
-	_ = strings.Join(a,"")
+	_ = strings.Join(a, "")
 }
 
 func Benchmark_BytesBuffer(b *testing.B) {
@@ -53,4 +54,12 @@ func Benchmark_StringsBuilder(b *testing.B) {
 		s.WriteString(strconv.Itoa(i))
 	}
 	_ = s.String()
+}
+
+func Benchmark_Sprint(b *testing.B) {
+	var s string
+	for i := 0; i < b.N; i++ {
+		s = fmt.Sprint(strconv.Itoa(i))
+	}
+	_ = s
 }
