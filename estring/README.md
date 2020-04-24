@@ -1,6 +1,7 @@
 # estring
-<br>
+
 ## concats
+
 ```
 goos: linux
 goarch: amd64
